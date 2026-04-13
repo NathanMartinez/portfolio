@@ -1,42 +1,79 @@
-# sv
+# Nate Martinez Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal portfolio site for my infrastructure, homelab, Linux, Docker, and web development work.
 
-## Creating a project
+## Overview
 
-If you're seeing this, you've probably already done this step. Congrats!
+This is the first public version of my portfolio site. The goal of this project is to create a clean, fast, and maintainable home for my projects, write-ups, and technical growth over time.
 
-```sh
-# create a new project
-npx sv create my-app
+This site is built with:
+
+- SvelteKit
+- TypeScript
+- Tailwind CSS
+- Custom CSS variables for theming
+- Cloudflare Pages for deployment
+
+## Status
+
+Current release: `v0.1.0`
+
+This version is an MVP focused on getting a real portfolio live on my domain with a solid foundation for future iteration.
+
+## Features
+
+- Responsive homepage
+- Dark and light theme support based on system preference
+- Projects section with linked cards
+- Skills section
+- Contact links
+- Versioned Git history with tagged releases
+
+## Roadmap
+
+### v0.2.0
+- Resume download button
+- Better project metadata
+- Improved typography and spacing polish
+- More refined mobile layout
+
+### v0.3.0
+- Dedicated project detail pages
+- Technical write-ups and lessons learned
+- Markdown-based project notes
+- Better content hierarchy and section depth
+
+### v0.4.0
+- Theme toggle
+- Analytics
+- Improved accessibility pass
+- SEO and social preview polish
+
+### v1.0.0
+- Stable public portfolio release
+- Complete project case studies
+- Resume and contact flow finalized
+- Production-ready design system and content structure
+
+## Development
+
+Install dependencies:
+
+```bash
+bun install
 ```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-bun x sv@0.15.0 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" playwright tailwindcss="plugins:typography,forms" --install bun portfolio
+Start the dev server:
+```bash
+bun run dev
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+## Build for production:
+```bash
+bun run build
 ```
+## Deployment
 
-## Building
+This site is intended to deploy through Cloudflare Pages with GitHub-based CI/CD.
 
-To create a production version of your app:
+## Purpose
 
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+This portfolio is part of my broader transition into infrastructure, systems administration, DevOps, SRE, and modern web engineering. It is designed to grow alongside my projects and document real hands-on work over time.
