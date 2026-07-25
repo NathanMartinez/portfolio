@@ -202,7 +202,7 @@ svg {
 		box-shadow var(--transition-fast);
 }
 
-.card:hover {
+.card-link:hover {
 	transform: translateY(-2px);
 	border-color: var(--accent);
 	box-shadow: var(--shadow-soft);
