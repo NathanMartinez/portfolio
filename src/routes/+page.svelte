@@ -1,5 +1,12 @@
 <script lang="ts">
 	const skills = [
+		'Manual Testing',
+		'Defect Reproduction',
+		'Test Documentation',
+		'API Testing',
+		'Database Testing',
+		'Jira',
+		'Technical Troubleshooting',
 		'Linux',
 		'Docker',
 		'Proxmox',
@@ -33,40 +40,58 @@
 			href: ''
 		}
 	];
+
+	type Project = (typeof projects)[number];
 </script>
 
+{#snippet projectDetails(project: Project)}
+	<h3 class="mb-3 font-mono text-lg font-semibold sm:text-xl">{project.title}</h3>
+	<p class="text-subtle mb-4 grow text-sm leading-7 sm:text-base">
+		{project.description}
+	</p>
+
+	<div class="flex flex-wrap gap-2">
+		{#each project.stack as item}
+			<span class="border-border bg-elevated text-muted rounded-full border px-2.5 py-1 text-xs">
+				{item}
+			</span>
+		{/each}
+	</div>
+{/snippet}
+
 <svelte:head>
-	<title>Nate Martinez | Portfolio</title>
+	<title>Nate Martinez | Software QA, Systems & Infrastructure</title>
 	<meta
 		name="description"
-		content="Portfolio for Nate Martinez focused on homelab, Linux, Docker, web development, and infrastructure projects."
+		content="Portfolio for Nate Martinez focused on software quality assurance, technical troubleshooting, systems, and infrastructure."
 	/>
-	<meta property="og:title" content="Nate Martinez | Portfolio" />
+	<meta property="og:title" content="Nate Martinez | Software QA, Systems & Infrastructure" />
 	<meta
 		property="og:description"
-		content="Homelab, Linux, Docker, web development, and infrastructure projects."
+		content="Software quality assurance, technical troubleshooting, systems, and infrastructure projects."
 	/>
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<main class="min-h-screen max-w-6xl p-5">
+<main class="mx-auto min-h-screen max-w-6xl p-5">
 	<div
 		class="bg-accent/10 pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl"
 	></div>
 	<section class="relative overflow-hidden sm:py-4 lg:py-8">
 		<p class="eyebrow text-xl sm:text-2xl">Nate Martinez</p>
 
-		<h1 class="font-mono text-4xl leading-[1.02] tracking-[-0.04em] sm:text-3xl lg:text-5xl">
-			Building practical systems with Linux, Docker, and modern web tools.
+		<h1 class="font-mono text-4xl leading-[1.02] tracking-[-0.04em] lg:text-5xl">
+			Connecting software quality, systems troubleshooting, and reliable infrastructure.
 		</h1>
 
 		<p class="text-muted mt-5 max-w-2xl text-base leading-8 sm:text-lg">
-			I build homelab infrastructure, self-hosted services, and web projects with a focus on
-			reliability, clarity, and hands-on problem solving.
+			I test software, reproduce defects, troubleshoot technical issues, and build homelab
+			infrastructure with a focus on clear documentation and practical problem solving.
 		</p>
 
 		<div class="mt-6 flex flex-wrap gap-3">
 			<a href="#projects" class="btn">View Projects</a>
+			<a href="/resume.pdf" download class="btn btn-secondary">Download Resume</a>
 			<a href="#contact" class="btn btn-secondary">Contact</a>
 		</div>
 
@@ -74,16 +99,17 @@
 			class="border-border bg-panel text-subtle mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-sm"
 		>
 			<span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-			Building homelab infra, containerized services, and web projects.
+			Testing software, troubleshooting systems, and building reliable infrastructure.
 		</p>
 	</section>
 
 	<section class="mb-14 sm:mb-16">
 		<h2 class="mb-4 font-mono text-2xl sm:text-3xl">About</h2>
 		<p class="text-muted text-base leading-8 sm:text-lg">
-			I’m an engineer and repair technician expanding into systems administration, DevOps,
-			infrastructure, and software development. I enjoy building useful systems, documenting what I
-			learn, and turning messy setups into clean, repeatable workflows.
+			I’m an engineer and repair technician focused on software quality, technical support, and
+			systems roles. My hands-on work spans manual testing, defect reproduction, technical
+			troubleshooting, Linux, containers, and homelab infrastructure. I enjoy documenting findings
+			and turning difficult problems into clear, repeatable solutions.
 		</p>
 	</section>
 
@@ -102,30 +128,23 @@
 
 	<section id="projects" class="mb-14 sm:mb-16">
 		<h2 class="mb-4 font-mono text-2xl sm:text-3xl">Projects</h2>
-		<div class="smgrid-cols-1 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each projects as project}
-				<a
-					href={project.href}
-					target="_blank"
-					rel="noreferrer"
-					class="card block p-5 sm:p-6"
-					aria-label={`Open project: ${project.title}`}
-				>
-					<h3 class="mb-3 font-mono text-lg font-semibold sm:text-xl">{project.title}</h3>
-					<p class="text-subtle mb-4 grow text-sm leading-7 sm:text-base">
-						{project.description}
-					</p>
-
-					<div class="flex flex-wrap gap-2">
-						{#each project.stack as item}
-							<span
-								class="border-border bg-elevated text-muted rounded-full border px-2.5 py-1 text-xs"
-							>
-								{item}
-							</span>
-						{/each}
-					</div>
-				</a>
+				{#if project.href}
+					<a
+						href={project.href}
+						target="_blank"
+						rel="noreferrer"
+						class="card card-link block p-5 sm:p-6"
+						aria-label={`Open project: ${project.title}`}
+					>
+						{@render projectDetails(project)}
+					</a>
+				{:else}
+					<article class="card block p-5 sm:p-6">
+						{@render projectDetails(project)}
+					</article>
+				{/if}
 			{/each}
 		</div>
 	</section>
