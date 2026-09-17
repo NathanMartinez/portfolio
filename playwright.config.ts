@@ -1,6 +1,12 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-	webServer: { command: 'npm run build && npm run preview', port: 4173 },
-	testMatch: '**/*.e2e.{ts,js}'
+	testDir: './tests',
+	use: { baseURL: 'http://127.0.0.1:8787', browserName: 'chromium' },
+	webServer: {
+		command: 'bun run preview',
+		url: 'http://127.0.0.1:8787',
+		reuseExistingServer: false,
+		timeout: 120_000
+	}
 });

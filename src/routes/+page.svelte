@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { asset } from '$app/paths';
+
 	const skills = [
 		'Manual Testing',
 		'Defect Reproduction',
@@ -51,7 +53,7 @@
 	</p>
 
 	<div class="flex flex-wrap gap-2">
-		{#each project.stack as item}
+		{#each project.stack as item (item)}
 			<span class="border-border bg-elevated text-muted rounded-full border px-2.5 py-1 text-xs">
 				{item}
 			</span>
@@ -91,7 +93,7 @@
 
 		<div class="mt-6 flex flex-wrap gap-3">
 			<a href="#projects" class="btn">View Projects</a>
-			<a href="/resume.pdf" download class="btn btn-secondary">Download Resume</a>
+			<a href={asset('/resume.pdf')} download class="btn btn-secondary">Download Resume</a>
 			<a href="#contact" class="btn btn-secondary">Contact</a>
 		</div>
 
@@ -116,7 +118,7 @@
 	<section class="mb-14 sm:mb-16">
 		<h2 class="mb-4 font-mono text-2xl sm:text-3xl">Skills</h2>
 		<div class="flex flex-wrap gap-2.5 sm:gap-3">
-			{#each skills as skill}
+			{#each skills as skill (skill)}
 				<span
 					class="border-border bg-panel text-muted hover:border-accent hover:text-accent rounded-full border px-3 py-2 text-sm transition"
 				>
@@ -129,12 +131,12 @@
 	<section id="projects" class="mb-14 sm:mb-16">
 		<h2 class="mb-4 font-mono text-2xl sm:text-3xl">Projects</h2>
 		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-			{#each projects as project}
+			{#each projects as project (project.title)}
 				{#if project.href}
 					<a
 						href={project.href}
 						target="_blank"
-						rel="noreferrer"
+						rel="external noreferrer"
 						class="card card-link block p-5 sm:p-6"
 						aria-label={`Open project: ${project.title}`}
 					>
