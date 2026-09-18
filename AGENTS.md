@@ -26,3 +26,28 @@
 - Report failures instead of hiding or suppressing them.
 - Keep generated files and build artifacts out of commits unless the project
   intentionally tracks them.
+
+## Repository conventions
+
+- Use Conventional Commits for commit messages:
+  - `feat:` for user-visible features
+  - `fix:` for bug fixes
+  - `test:` for test coverage or test-only changes
+  - `chore:` for tooling, dependency, CI, and maintenance work
+  - `docs:` for documentation-only changes
+  - `refactor:` only when behavior is intentionally unchanged
+
+- Keep commits logically scoped and independently understandable.
+- Do not combine visual/product work with tooling or infrastructure cleanup.
+
+- Follow Semantic Versioning for release planning:
+  - `v0.2.0` — visual redesign and tooling/pipeline foundation
+  - `v0.3.0` — discoverability/presentation improvements such as social preview,
+    metadata/SEO, theme polish, accessibility work, and optional analytics
+  - `v0.4.0` — portfolio depth such as additional projects, case studies,
+    richer project presentation, and optional project/skill filtering
+  - `v1.0.0` — stable public release with finalized resume/content and
+    production-ready validation
+
+- Do not create or move version tags unless explicitly requested.
+- The README should reflect the current planned release/version state.
