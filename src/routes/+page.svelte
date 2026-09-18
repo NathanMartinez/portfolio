@@ -17,19 +17,33 @@
 		'Networking'
 	];
 </script>
-
 <svelte:head>
-	<title>Nate Martinez | Software QA, Systems & Infrastructure</title>
+	<title>Nate Martinez | Software Quality, Systems & Automation</title>
+
 	<meta
 		name="description"
 		content="Portfolio for Nate Martinez: software quality, systems support, automation, and open-source developer tooling."
 	/>
-	<meta property="og:title" content="Nate Martinez | Software QA, Systems & Infrastructure" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Nate Martinez" />
+	<meta property="og:title" content="Nate Martinez | Software Quality, Systems & Automation" />
 	<meta
 		property="og:description"
 		content="Software quality, systems support, automation, and open-source developer tooling."
 	/>
-	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://natemtz.dev/" />
+	<meta property="og:image" content="https://natemtz.dev/assets/og-preview.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Nate Martinez | Software Quality, Systems & Automation" />
+	<meta
+		name="twitter:description"
+		content="Software quality, systems support, automation, and open-source developer tooling."
+	/>
+	<meta name="twitter:image" content="https://natemtz.dev/assets/og-preview.png" />
 </svelte:head>
 
 <Atmosphere />
