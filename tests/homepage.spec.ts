@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('homepage renders through the Worker preview', async ({ page }) => {
 	const response = await page.goto('/');
 	expect(response?.status()).toBe(200);
-	await expect(page).toHaveTitle('Nate Martinez | Software QA, Systems & Infrastructure');
+	await expect(page).toHaveTitle('Nate Martinez | Software Quality, Systems & Automation');
 	await expect(page.getByRole('heading', { level: 1 })).toHaveText(
 		'Software quality, systems support, and practical automation.'
 	);
