@@ -1,6 +1,6 @@
 # Nate Martinez Portfolio
 
-Personal portfolio site for my infrastructure, homelab, Linux, Docker, and web development work.
+Personal portfolio for software quality, systems support, practical automation, and developer tooling.
 
 ## Overview
 
@@ -148,33 +148,35 @@ This site uses Cloudflare Workers Builds, `@sveltejs/adapter-cloudflare`, and
 versions. The Worker name, domain, runtime compatibility settings, assets, and
 observability are preserved.
 
-The GitHub Actions workflow validates pull requests to `main`, pushes to `main`
-and `chore/tooling-cleanup`, and manual runs. It uses Node 24, `npm ci`, Chromium with
-Linux dependencies, and `npm run validate`. It does not deploy or need Cloudflare
-credentials. Require the `validate` check in branch protection if desired.
+The GitHub Actions workflow validates pull requests to `main`, pushes to `main`,
+and manual runs. It uses Node 24, `npm ci`, Chromium with Linux dependencies,
+and `npm run validate`. It does not deploy or require Cloudflare credentials.
+Require the `validate` check in branch protection if desired.
 
-### Workers Builds settings to apply with the npm migration
+### Workers Builds settings
 
-The dashboard triggers need to be migrated from the previous package-manager
-commands. Apply these settings when publishing the npm migration; repository edits
-do not update the dashboard automatically:
+Cloudflare Workers Builds handles production and preview deployment from the
+connected Git repository.
 
-- Node: 24 via `.nvmrc` (remove/update any conflicting `NODE_VERSION` override).
-- Build variable: `SKIP_DEPENDENCY_INSTALL=1`, so the explicit `npm ci` is authoritative.
-- Build command, on both production and preview triggers:
-  `npm ci && npx playwright install --with-deps chromium && npm run validate`
-- Keep production branch `main` and deploy command `npx wrangler deploy`.
-- Keep other-branch preview command `npx wrangler versions upload`.
+Current build settings:
 
-This makes validation a prerequisite in the same Cloudflare build before either
-upload/deploy command. A separate GitHub check alone does not gate Workers Builds.
-Confirm the first hosted run, including browser OS-dependency installation, before
-considering the remote pipeline verified. See the
-[Workers Builds image/settings reference](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/).
+- Node: 24 via `.nvmrc`
+- Build variable: `SKIP_DEPENDENCY_INSTALL=1`
+- Build command:
+  `npm ci && npm run lint && npm run check && npm run build`
+- Production branch: `main`
+- Production deploy command: `npx wrangler deploy`
+- Other-branch preview command: `npx wrangler versions upload`
 
-For an intentional manual deployment after browser installation and Cloudflare
-authentication, `npm run deploy` runs the full validation first, then the local
-Wrangler deploy command. No deployment is performed by installation or validation.
+GitHub Actions owns the full browser-test validation gate, including Playwright
+and its Linux system dependencies. Cloudflare runs formatting/lint checks,
+Svelte/TypeScript checks, and the production build before deployment.
+
+This separation is intentional: Cloudflare's build image does not provide the
+system libraries required to run Playwright Chromium, while GitHub's Ubuntu
+runner can install those dependencies with `npx playwright install --with-deps chromium`.
+
+The first hosted Cloudflare build using this configuration has been verified successfully.
 
 ## Project structure
 
@@ -193,4 +195,6 @@ Wrangler deploy command. No deployment is performed by installation or validatio
 
 ## Purpose
 
-This portfolio is part of my broader transition into infrastructure, systems administration, DevOps, SRE, and modern web engineering. It is designed to grow alongside my projects and document real hands-on work over time.
+This portfolio documents my work across software quality, systems support,
+automation, developer tooling, and modern web development. It is designed to
+grow alongside my projects and capture practical, hands-on technical work over time.
