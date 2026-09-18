@@ -18,11 +18,12 @@ This site is built with:
 
 ## Status
 
-Preparing: `v0.2.0` — the completed visual redesign and tooling/pipeline foundation.
+Preparing: `v0.2.0` — the completed visual redesign, branding/social metadata,
+and tooling/pipeline foundation.
 The package version is 0.2.0; this does not create a release or tag.
 
-`v0.1.0` established the earlier public portfolio structure. The final resume and
-production-content review remain part of the future v1.0.0 milestone.
+`v0.1.0` established the earlier public portfolio structure. The current resume is
+available to download; final resume/content review remains part of v1.0.0.
 
 ## Features
 
@@ -32,6 +33,7 @@ production-content review remain part of the future v1.0.0 milestone.
 - Skills section
 - Contact links
 - Resume download
+- Portfolio branding, favicon/touch-icon assets, and Open Graph/Twitter social preview
 - Custom 404 with repeat-visit messages and storage-failure handling
 - Reduced-motion support and atmospheric backgrounds
 
@@ -41,11 +43,12 @@ production-content review remain part of the future v1.0.0 milestone.
 
 - Visual redesign, responsive layouts, system-based themes, and custom 404
 - Bun Burner featured project and resume download
+- Branding, favicon assets, social metadata, and Open Graph preview image
 - Node 24/npm tooling, reproducible checks, and CI/pipeline foundation
 
 ### v0.3.0
 
-- Open Graph/social preview image and metadata/SEO
+- Further metadata/SEO and social-preview verification
 - Theme-toggle polish and accessibility pass
 - Optional lightweight analytics
 
@@ -84,36 +87,40 @@ npm run build
 
 ## Validation and preview
 
+Install Playwright's versioned Chromium after dependency installation or a
+Playwright upgrade, then run the full local gate:
+
 ```bash
-npm run lint
-npm run check
-npm run build
-npm run check
 npx playwright install chromium
-npm run test
+npm run validate
 ```
 
-`npm run preview` serves the existing production build at `http://127.0.0.1:8787`;
-run `npm run build` first. `npm test` builds once, then Playwright starts this
-Worker preview without rebuilding or reusing another server. The existing tests
-cover homepage rendering, project/contact actions, resume download, single-project
+On supported Linux CI runners, use `npx playwright install --with-deps chromium`
+to install the browser and its system dependencies. A globally installed browser
+is not required.
+
+| Command                | Intended use                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| `npm run format`       | Intentionally fix formatting with Prettier write mode.                          |
+| `npm run format:check` | Verify formatting without fixing files.                                         |
+| `npm run lint`         | Verify formatting, then run ESLint without fixes.                               |
+| `npm run check`        | Generate bindings and run Svelte/TypeScript checks.                             |
+| `npm run check:watch`  | Watch Svelte/TypeScript diagnostics.                                            |
+| `npm run build`        | Generate bindings and build the production Worker.                              |
+| `npm run test`         | Build once, then run Playwright against the Worker preview.                     |
+| `npm run validate`     | Run lint (including formatting), check, build/Playwright, and post-build check. |
+| `npm run preview`      | Serve the existing production build at `http://127.0.0.1:8787`.                 |
+| `npm run deploy`       | Run the full validation gate, then deploy only if it succeeds.                  |
+
+Run `npm run build` before a standalone preview. Playwright starts the same preview
+command without rebuilding or reusing another server. The existing tests cover
+homepage rendering, project/contact actions, resume download, single-project
 controls, custom 404 behavior, and unavailable localStorage. There are no unit tests.
 
-Chromium installation is explicit and uses Playwright's versioned browser, not a
-global browser. After installing or upgrading Playwright, run:
-
-```bash
-npx playwright install chromium
-```
-
-On supported Linux CI runners, install browser system dependencies too:
-
-```bash
-npx playwright install --with-deps chromium
-```
-
-`npm run validate` runs lint, check, build/E2E, and another check after the build.
-`npm run format` formats files; `npm run check:watch` watches source diagnostics.
+Validation and deployment use `&&` to stop at the first failure. Neither command
+runs formatting fixes or ESLint fixes. Checks/builds regenerate ignored tooling
+and build output, but do not rewrite application source. Run `npm run format`
+explicitly when formatting needs correction, then rerun validation.
 
 ### Cloudflare environment types
 
@@ -141,15 +148,16 @@ This site uses Cloudflare Workers Builds, `@sveltejs/adapter-cloudflare`, and
 versions. The Worker name, domain, runtime compatibility settings, assets, and
 observability are preserved.
 
-The added GitHub Actions workflow is configured to validate pull requests to `main`,
-pushes to `main` and `chore/tooling-cleanup`, and manual runs once published. It uses Node 24, `npm ci`, Chromium with
+The GitHub Actions workflow validates pull requests to `main`, pushes to `main`
+and `chore/tooling-cleanup`, and manual runs. It uses Node 24, `npm ci`, Chromium with
 Linux dependencies, and `npm run validate`. It does not deploy or need Cloudflare
 credentials. Require the `validate` check in branch protection if desired.
 
 ### Workers Builds settings to apply with the npm migration
 
-The existing dashboard triggers still use `bun run build`. Coordinate these changes
-when publishing the npm migration; they have not been applied by this local pass:
+The dashboard triggers need to be migrated from the previous package-manager
+commands. Apply these settings when publishing the npm migration; repository edits
+do not update the dashboard automatically:
 
 - Node: 24 via `.nvmrc` (remove/update any conflicting `NODE_VERSION` override).
 - Build variable: `SKIP_DEPENDENCY_INSTALL=1`, so the explicit `npm ci` is authoritative.
@@ -170,12 +178,15 @@ Wrangler deploy command. No deployment is performed by installation or validatio
 
 ## Project structure
 
-- `src/routes/+page.svelte`: homepage and skills
+- `src/routes/+page.svelte`: homepage, skills, and social metadata
+- `src/app.html`: document shell and favicon/touch-icon links
 - `src/lib/data/projects.ts`: featured project data, including Bun Burner
 - `src/lib/components/`: atmosphere and featured project rendering
 - `src/routes/+error.svelte`: custom 404 and repeat-visit messages
 - `src/app.css` and `src/routes/layout.css`: visual system and Tailwind entrypoint
-- `static/`: fonts, optimized backgrounds, favicon, and downloadable resume
+- `static/assets/`: optimized backgrounds, favicon/touch icons, and `og-preview.png`
+- `static/fonts/`: local font assets
+- `static/resume.pdf`: downloadable resume
 - `tests/`: homepage and 404 browser tests
 - `scripts/cf-typegen.mjs`: generated application binding types
 - `.github/workflows/validate.yml`: validation pipeline
