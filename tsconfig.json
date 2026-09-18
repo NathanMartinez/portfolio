@@ -10,7 +10,6 @@
 		"skipLibCheck": false,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "bundler",
-		"types": ["node"]
+		"moduleResolution": "bundler"
 	}
 }
