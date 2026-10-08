@@ -1,71 +1,136 @@
 # Nate Martinez Portfolio
 
-Personal portfolio for software quality, systems support, practical automation, and developer tooling.
+Personal portfolio showcasing my work in software quality engineering, systems engineering, developer tooling, automation, and open-source development.
+
+🌐 **Live website:** [natemtz.dev](https://natemtz.dev)
 
 ## Overview
 
-This repository is preparing the v0.2.0 portfolio release. The goal of this project is to create a clean, fast, and maintainable home for my projects, write-ups, and technical growth over time.
+A responsive portfolio built with SvelteKit, TypeScript, and Cloudflare Workers.
 
-This site is built with:
+The site highlights my professional experience, independent development projects, and open-source contributions. It also serves as a practical environment for exploring modern web development, automated testing, accessibility, and deployment workflows.
 
-- Svelte 5 and SvelteKit 2 with Vite 8
-- TypeScript 6
-- Tailwind CSS v4 (CSS-first `@theme` configuration)
-- Custom CSS variables for theming
-- Cloudflare Workers with `@sveltejs/adapter-cloudflare` and local Wrangler v4
-- Node.js 24 LTS and npm for development/tooling
-- Playwright Chromium tests, ESLint, and Prettier
+The project prioritizes maintainability, reproducible builds, responsive design, and reliable deployment.
+
+### Technology stack
+
+- Svelte 5, SvelteKit 2, Vite 8, and TypeScript 6
+- Tailwind CSS 4 with CSS-first `@theme` configuration and custom CSS variables
+- Cloudflare Workers, adapter-cloudflare 7, and Wrangler 4
+- Node.js 24 and npm; Playwright Chromium, ESLint, and Prettier
+
+`package-lock.json` records exact dependency versions. The current release candidate
+uses SvelteKit 2.70.3, adapter-cloudflare 7.2.9, and Wrangler 4.149.0.
 
 ## Status
 
-Preparing: `v0.2.0` — the completed visual redesign, branding/social metadata,
-and tooling/pipeline foundation.
-The package version is 0.2.0; this does not create a release or tag.
+**Current milestone: v0.2.0 release candidate**
 
-`v0.1.0` established the earlier public portfolio structure. The current resume is
-available to download; final resume/content review remains part of v1.0.0.
+The v0.2.0 update introduces an expanded project showcase, refreshed professional positioning, responsive UI improvements, and refinements to the existing design system.
+
+The application version is set to `0.2.0`. Local automated validation and browser
+inspection passed on 2026-10-08. Commit review, Lighthouse audits, and deployment
+verification remain pending; no release tag has been created by this stabilization.
+
+Previous milestone:
+
+- **v0.1.0:** Initial public portfolio structure and core functionality.
 
 ## Features
 
-- Responsive homepage
-- Dark and light theme support based on system preference
-- Data-driven featured project section showcasing Bun Burner
-- Skills section
-- Contact links
-- Resume download
-- Portfolio branding, favicon/touch-icon assets, and Open Graph/Twitter social preview
-- Custom 404 with repeat-visit messages and storage-failure handling
-- Reduced-motion support and atmospheric backgrounds
+- Responsive homepage with mobile, tablet, and desktop layouts
+- System-based dark and light themes
+- Featured project carousel with keyboard-accessible navigation controls
+- Data-driven project content using typed TypeScript definitions
+- Featured projects:
+  - **Bun Burner:** Source-preserving bidirectional synchronization and developer tooling
+  - **Chora:** Open-source Android TV contributions, including three merged upstream pull requests
+- Technical expertise section covering software development, quality engineering, and infrastructure
+- Downloadable résumé
+- GitHub, LinkedIn, and email contact links
+- Custom portfolio branding, favicon, and touch icons
+- Open Graph and Twitter social preview metadata
+- Custom 404 page with repeat-visit messages and storage-failure handling
+- Reduced-motion support and atmospheric responsive backgrounds
+
+Interactive controls use native links/buttons, accessible labels, visible keyboard
+focus, and live announcements for carousel selection and 404 messages. These are
+implemented features, not a claim of accessibility compliance; a formal audit is pending.
+
+## Featured Projects
+
+### Bun Burner
+
+**TypeScript · WebSockets · Developer Tooling · Automated Testing**
+
+A source-preserving, bidirectional synchronization tool connecting external development environments to Bitburner's Remote API.
+
+The project focuses on safe synchronization, conflict handling, recovery behavior, and cross-platform validation.
+
+**Repository:** [NathanMartinez/bun-burner](https://github.com/NathanMartinez/bun-burner)
+
+### Chora
+
+**Kotlin · Android TV · Open Source · Quality Engineering**
+
+Contributions to Chora, an open-source Android music application.
+
+Three merged upstream pull requests address:
+
+- [Navidrome provider initialization (#116)](https://github.com/CraftWorksMC/Chora/pull/116)
+- [Pull-request debug-build validation (#118)](https://github.com/CraftWorksMC/Chora/pull/118)
+- [Playlist deletion confirmation and remote-control input handling (#121)](https://github.com/CraftWorksMC/Chora/pull/121)
+
+Testing included physical Fire TV hardware and Android emulators.
+
+**Upstream repository:** [CraftWorksMC/Chora](https://github.com/CraftWorksMC/Chora)
 
 ## Roadmap
 
-### v0.2.0
+### v0.2.0 — Current milestone
 
-- Visual redesign, responsive layouts, system-based themes, and custom 404
-- Bun Burner featured project and resume download
-- Branding, favicon assets, social metadata, and Open Graph preview image
-- Node 24/npm tooling, reproducible checks, and CI/pipeline foundation
+- [x] Responsive visual redesign and refined glass UI
+- [x] Updated professional positioning and technical expertise
+- [x] Bun Burner featured project
+- [x] Chora open-source contribution showcase
+- [x] Redesigned project carousel and navigation controls
+- [x] Improved mobile layout and keyboard accessibility
+- [x] Portfolio branding, favicon assets, and social metadata
+- [x] Node.js 24 tooling, reproducible validation, and CI foundation
+- [x] Local automated validation (2026-10-08)
+- [ ] Mobile and desktop Lighthouse audits
+- [ ] Production deployment verification
+- [ ] Git release tag
 
-### v0.3.0
+### v0.3.0 — Accessibility & discoverability
 
-- Further metadata/SEO and social-preview verification
-- Theme-toggle polish and accessibility pass
-- Optional lightweight analytics
+- Further accessibility testing and refinements
+- SEO and social-preview verification
+- Theme-toggle improvements
+- Optional privacy-conscious analytics
+- Expanded browser and responsive testing
 
-### v0.4.0
+### v0.4.0 — Project case studies
 
-- Additional project/case study and richer project presentation
-- Possible project/skill filtering
+- Detailed engineering case studies
+- Expanded project documentation
+- Additional open-source contribution highlights
+- Optional project filtering or categorization
 
-### v1.0.0
+### v1.0.0 — Stable release
 
-- Final resume and finalized production content
-- Final accessibility, performance, SEO, and deployment hardening
+- Finalized professional content and résumé
+- Accessibility, performance, and SEO review
+- Deployment hardening and documentation
 - Stable public portfolio release
 
 ## Development
 
 Use Node.js 24 LTS (`.nvmrc`; `nvm use` if you use nvm) and npm.
+`package.json` requires `24.x`, and `.npmrc` enforces the Node engine requirement.
+The current site needs no application secrets or `.env` file for local use; its
+only configured binding is `ASSETS`, served locally by Wrangler. Deploying requires
+separate Cloudflare account authorization.
 
 Install the locked dependencies:
 
@@ -79,7 +144,7 @@ Start the dev server:
 npm run dev
 ```
 
-## Build for production:
+## Build for production
 
 ```bash
 npm run build
@@ -101,6 +166,9 @@ is not required.
 
 | Command                | Intended use                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------- |
+| `npm run dev`          | Generate bindings, then start the Vite development server.                      |
+| `npm run cf-typegen`   | Regenerate ignored application binding declarations from Wrangler config.       |
+| `npm run prepare`      | Generate bindings and sync SvelteKit; also runs during dependency installation. |
 | `npm run format`       | Intentionally fix formatting with Prettier write mode.                          |
 | `npm run format:check` | Verify formatting without fixing files.                                         |
 | `npm run lint`         | Verify formatting, then run ESLint without fixes.                               |
@@ -114,8 +182,15 @@ is not required.
 
 Run `npm run build` before a standalone preview. Playwright starts the same preview
 command without rebuilding or reusing another server. The existing tests cover
-homepage rendering, project/contact actions, resume download, single-project
-controls, custom 404 behavior, and unavailable localStorage. There are no unit tests.
+homepage rendering, project/contact actions, resume download, carousel button and
+keyboard navigation, custom 404 behavior, and unavailable localStorage. There are no unit tests.
+The 11 Chromium tests include 1440px, 768px, and 390px layouts in both system themes,
+with checks for console errors, failed assets, and horizontal overflow. Screenshots
+are written to ignored `test-results/`. External project-link navigation is mocked
+in the homepage test; it does not verify GitHub availability.
+
+Stop a standalone preview before running tests, and run builds/validation serially:
+they share generated `.svelte-kit` output and tests require port 8787.
 
 Validation and deployment use `&&` to stop at the first failure. Neither command
 runs formatting fixes or ESLint fixes. Checks/builds regenerate ignored tooling
@@ -136,17 +211,40 @@ excluded and imports the current `Fetcher` binding type from
 with browser DOM types. If new binding kinds are added, add their type imports to
 `scripts/cf-typegen.mjs`. Review this experimental API when upgrading Wrangler.
 
+Wrangler's environment output also includes Worker asset-import declarations for
+text, HTML, SQL, binary, and Wasm files. The generator omits these six known
+declarations from application types because Vite owns application asset imports.
+It rejects malformed generated syntax, preserves binding interfaces and namespaces,
+and stops for review if Wrangler introduces an unfamiliar string-literal module
+declaration. This prevents ambient declarations
+from becoming module augmentations under the module-scoped `Fetcher` import.
+
 Previously Wrangler generated a `GlobalProps.mainModule` import when the built
 Worker existed. That import pulled compiled JavaScript into application checking,
 even through exclusions. The bindings-only config removes that dependency at its
 source; checking does not delete build output or use `skipLibCheck`.
 
+### Dependency security review
+
+The 2026-10-08 npm audit reported three low-severity package findings from one
+[cookie advisory](https://github.com/advisories/GHSA-pxg6-pf52-xh8x), with no
+moderate, high, or critical findings. The affected path is
+`@sveltejs/adapter-cloudflare -> @sveltejs/kit -> cookie@0.6.0`; Kit is also a direct
+dependency. npm proposes SvelteKit 3 and adapter 8 upgrades, deferred beyond this
+v0.2.0 stabilization. No forced audit fix or dependency override was applied.
+
+The advisory concerns invalid characters in serialized cookie names, paths, and
+domains. Application source currently sets no cookies, so it has no identified
+user-controlled cookie serialization path; the bundled framework dependency
+remains affected. Review this again when adding cookie-based features.
+
 ## Deployment
 
-This site uses Cloudflare Workers Builds, `@sveltejs/adapter-cloudflare`, and
-`wrangler.jsonc`. Production deploys from `main`; other branches upload preview
-versions. The Worker name, domain, runtime compatibility settings, assets, and
-observability are preserved.
+The Cloudflare adapter produces `.svelte-kit/cloudflare/_worker.js` and static
+assets under `.svelte-kit/cloudflare`. `wrangler.jsonc` configures the `portfolio`
+Worker, `natemtz.dev` custom domain, `ASSETS` binding, compatibility date
+`2026-04-14`, `nodejs_compat`, observability, workers.dev, and preview URLs.
+These are repository settings; they do not verify the currently deployed state.
 
 The GitHub Actions workflow validates pull requests to `main`, pushes to `main`,
 and manual runs. It uses Node 24, `npm ci`, Chromium with Linux dependencies,
@@ -155,10 +253,11 @@ Require the `validate` check in branch protection if desired.
 
 ### Workers Builds settings
 
-Cloudflare Workers Builds handles production and preview deployment from the
-connected Git repository.
+The intended Workers Builds setup uses the connected Git repository for production
+and preview builds. Branch behavior and build commands are dashboard settings,
+not enforced by `wrangler.jsonc` or the GitHub workflow.
 
-Current build settings:
+Intended dashboard settings (verify separately before deployment):
 
 - Node: 24 via `.nvmrc`
 - Build variable: `SKIP_DEPENDENCY_INSTALL=1`
@@ -172,29 +271,28 @@ GitHub Actions owns the full browser-test validation gate, including Playwright
 and its Linux system dependencies. Cloudflare runs formatting/lint checks,
 Svelte/TypeScript checks, and the production build before deployment.
 
-This separation is intentional: Cloudflare's build image does not provide the
-system libraries required to run Playwright Chromium, while GitHub's Ubuntu
-runner can install those dependencies with `npx playwright install --with-deps chromium`.
+This separation keeps browser testing on GitHub's Ubuntu runner, where the workflow
+explicitly installs Chromium and its system dependencies with
+`npx playwright install --with-deps chromium`.
 
-The first hosted Cloudflare build using this configuration has been verified successfully.
+Earlier project notes record a successful hosted build. The dashboard settings and
+hosted v0.2.0 candidate have not been reverified during this local stabilization.
 
 ## Project structure
 
 - `src/routes/+page.svelte`: homepage, skills, and social metadata
 - `src/app.html`: document shell and favicon/touch-icon links
-- `src/lib/data/projects.ts`: featured project data, including Bun Burner
+- `src/lib/data/projects.ts`: typed featured project data for Bun Burner and Chora
 - `src/lib/components/`: atmosphere and featured project rendering
 - `src/routes/+error.svelte`: custom 404 and repeat-visit messages
 - `src/app.css` and `src/routes/layout.css`: visual system and Tailwind entrypoint
 - `static/assets/`: optimized backgrounds, favicon/touch icons, and `og-preview.png`
 - `static/fonts/`: local font assets
 - `static/resume.pdf`: downloadable resume
-- `tests/`: homepage and 404 browser tests
+- `tests/`: homepage, 404, and responsive/theme browser tests
 - `scripts/cf-typegen.mjs`: generated application binding types
 - `.github/workflows/validate.yml`: validation pipeline
 
 ## Purpose
 
-This portfolio documents my work across software quality, systems support,
-automation, developer tooling, and modern web development. It is designed to
-grow alongside my projects and capture practical, hands-on technical work over time.
+This portfolio documents my work across software quality engineering, systems engineering, developer tooling, automation, and open-source development. It serves as both a professional showcase and a continuously evolving software project.
