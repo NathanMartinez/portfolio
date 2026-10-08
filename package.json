@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "npm run cf-typegen && vite dev",
+		"dev:host": "npm run cf-typegen && vite dev --host",
 		"build": "npm run cf-typegen && vite build",
 		"preview": "wrangler dev --ip 127.0.0.1 --port 8787",
 		"prepare": "npm run cf-typegen && svelte-kit sync",
