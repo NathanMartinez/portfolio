@@ -17,23 +17,11 @@
 				Featured {projects.length === 1 ? 'Project' : 'Projects'}
 			</h2>
 			{#if projects.length > 1}
-				<div class="project-controls" aria-label="Project selection">
-					<button
-						class="control"
-						type="button"
-						aria-label="Previous project"
-						onclick={() => move(-1)}>←</button
-					>
-					<span class="project-position"
-						>{String(position + 1).padStart(2, '0')} / {String(projects.length).padStart(
-							2,
-							'0'
-						)}</span
-					>
-					<button class="control" type="button" aria-label="Next project" onclick={() => move(1)}
-						>→</button
-					>
-				</div>
+				<span class="project-position">
+					{String(position + 1).padStart(2, '0')}
+					/
+					{String(projects.length).padStart(2, '0')}
+				</span>
 			{/if}
 		</div>
 		<article class="glass project-card" aria-labelledby="project-name">
@@ -49,6 +37,32 @@
 						<path
 							d="M32 48C35 57 22 60 26 69C16 65 20 53 25 51C24 56 28 57 28 57L32 48Z"
 							fill="currentColor"
+						/>
+					</svg>
+				{:else if project.icon === 'chora'}
+					<svg viewBox="0 0 80 80" fill="none" aria-hidden="true" class="chora-icon">
+						<rect
+							x="5"
+							y="5"
+							width="70"
+							height="70"
+							rx="18"
+							stroke="currentColor"
+							stroke-width="1.5"
+							opacity="0.45"
+						/>
+						<path
+							d="M56 28C51.5 22.5 46 20 39 20C27 20 19 29 19 40C19 51 27 60 39 60C46 60 51.5 57.5 56 52"
+							stroke="currentColor"
+							stroke-width="4.5"
+							stroke-linecap="round"
+						/>
+						<path
+							d="M61 32V48"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							opacity="0.55"
 						/>
 					</svg>
 				{:else}
@@ -79,6 +93,19 @@
 					>
 				</a>
 			</div>
+			{#if projects.length > 1}
+				<div class="project-controls" aria-label="Project selection">
+					<button
+						class="control"
+						type="button"
+						aria-label="Previous project"
+						onclick={() => move(-1)}>←</button
+					>
+					<button class="control" type="button" aria-label="Next project" onclick={() => move(1)}
+						>→</button
+					>
+				</div>
+			{/if}
 		</article>
 	</section>
 {/if}
