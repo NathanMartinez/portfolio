@@ -57,6 +57,9 @@
 	--text-muted: #d9d3c9;
 	--text-subtle: #cbc5bb;
 	--accent: #e5c49c;
+	--project-logo-stroke: 2;
+	--project-chora-color: #b2bbff;
+	--project-label-color: var(--accent);
 	--accent-hover: #f0d6b5;
 	--accent-ink: #27221c;
 	--surface-solid: #252a2b;
@@ -85,6 +88,9 @@
 		--text-muted: #444b4c;
 		--text-subtle: #515859;
 		--accent: #704c28;
+		--project-logo-stroke: 3.5;
+		--project-chora-color: #454e94;
+		--project-label-color: var(--text);
 		--accent-hover: #624322;
 		--accent-ink: #fff9ef;
 		--surface-solid: #eee8de;
@@ -325,10 +331,10 @@
 		border-color var(--transition-fast);
 }
 
-.project-identity .chora-icon {
+.project-logo.chora-icon {
 	width: 5.5rem;
 	height: 5.5rem;
-	color: #b2bbff;
+	color: var(--project-chora-color);
 	filter: drop-shadow(0 0 10px rgb(178 187 255 / 16%));
 }
 
@@ -412,11 +418,20 @@
 	background: linear-gradient(150deg, var(--highlight), transparent);
 	color: var(--accent);
 }
-.project-identity svg {
-	width: 4.5rem;
+.project-logo-frame {
+	display: grid;
+	place-items: center;
+	width: 6rem;
+	height: 6rem;
+	flex-shrink: 0;
+}
+.project-logo {
+	stroke-width: var(--project-logo-stroke);
+	width: 5rem;
 	height: 6rem;
 }
 .project-identity-label {
+	color: var(--project-label-color);
 	font: 0.6rem var(--font-code);
 	letter-spacing: 0.15em;
 	text-transform: uppercase;
@@ -679,14 +694,32 @@
 		border-bottom: 1px solid var(--divider);
 	}
 
-	.project-identity svg {
-		width: 2rem;
-		height: 2.5rem;
-		flex-shrink: 0;
+	.project-logo-frame {
+		width: 3.5rem;
+		height: 3.5rem;
+	}
+
+	.project-logo {
+		width: 3rem;
+		height: 3.5rem;
+	}
+
+	.project-logo.chora-icon {
+		width: 3rem;
+		height: 3rem;
 	}
 
 	.project-identity-label {
-		display: inline;
+		font-size: 0.75rem;
+		font-weight: 600;
+		line-height: 1.5;
+		letter-spacing: 0.08em;
+	}
+
+	.project-label {
+		font-size: 0.6875rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
 	}
 
 	.contact-section {
@@ -711,14 +744,6 @@
 	.hero-actions .btn {
 		flex-grow: 1;
 	}
-	.project-identity svg {
-		width: 2rem;
-		height: 2.5rem;
-	}
-	.project-identity-label {
-		display: inline;
-	}
-
 	.site-footer {
 		align-items: center;
 		flex-wrap: wrap;

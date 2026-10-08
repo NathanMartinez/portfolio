@@ -26,45 +26,12 @@
 		</div>
 		<article class="glass project-card" aria-labelledby="project-name">
 			<div class="project-identity" aria-hidden="true">
-				{#if project.icon === 'flame'}
-					<svg viewBox="0 0 64 80" fill="none">
-						<path
-							d="M35 3C39 22 16 24 24 42C14 39 11 32 11 32C-5 55 9 75 31 76C56 77 70 47 48 25C50 41 42 44 40 45C46 24 35 3 35 3Z"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linejoin="round"
-						/>
-						<path
-							d="M32 48C35 57 22 60 26 69C16 65 20 53 25 51C24 56 28 57 28 57L32 48Z"
-							fill="currentColor"
-						/>
-					</svg>
-				{:else if project.icon === 'chora'}
-					<svg viewBox="0 0 80 80" fill="none" aria-hidden="true" class="chora-icon">
-						<rect
-							x="5"
-							y="5"
-							width="70"
-							height="70"
-							rx="18"
-							stroke="currentColor"
-							stroke-width="1.5"
-							opacity="0.45"
-						/>
-						<path
-							d="M56 28C51.5 22.5 46 20 39 20C27 20 19 29 19 40C19 51 27 60 39 60C46 60 51.5 57.5 56 52"
-							stroke="currentColor"
-							stroke-width="4.5"
-							stroke-linecap="round"
-						/>
-						<path
-							d="M61 32V48"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							opacity="0.55"
-						/>
-					</svg>
+				{#if project.icon}
+					<span class="project-logo-frame">
+						<svg class="project-logo" class:chora-icon={project.id === 'chora'} aria-hidden="true">
+							<use href={project.icon + '#logo'} />
+						</svg>
+					</span>
 				{:else}
 					<span class="project-monogram">{project.name.slice(0, 2)}</span>
 				{/if}

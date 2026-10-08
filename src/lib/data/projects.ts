@@ -6,7 +6,7 @@ export type Project = {
 	validation: string;
 	technologies: string[];
 	href: `https://${string}`;
-	icon?: 'flame' | 'chora';
+	icon?: `/icons/projects/${string}.svg`;
 };
 
 export const projects: Project[] = [
@@ -20,7 +20,7 @@ export const projects: Project[] = [
 			'Automated recovery and failure-path tests, with Linux and Windows checks in GitHub Actions.',
 		technologies: ['TypeScript', 'Bun', 'WebSockets', 'Test Automation', 'CI', 'Open Source'],
 		href: 'https://github.com/NathanMartinez/bun-burner',
-		icon: 'flame'
+		icon: '/icons/projects/bun-burner.svg'
 	},
 
 	{
@@ -40,6 +40,6 @@ export const projects: Project[] = [
 			'Open Source'
 		],
 		href: 'https://github.com/CraftWorksMC/Chora',
-		icon: 'chora'
+		icon: '/icons/projects/chora.svg'
 	}
 ];

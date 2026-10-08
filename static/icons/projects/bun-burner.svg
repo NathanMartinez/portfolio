@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80">
+  <symbol id="logo" viewBox="0 0 64 80" fill="none">
+    <path d="M35 3C39 22 16 24 24 42C14 39 11 32 11 32C-5 55 9 75 31 76C56 77 70 47 48 25C50 41 42 44 40 45C46 24 35 3 35 3Z" stroke="currentColor" stroke-linejoin="round" />
+    <path d="M32 48C35 57 22 60 26 69C16 65 20 53 25 51C24 56 28 57 28 57L32 48Z" fill="currentColor" />
+  </symbol>
+  <use href="#logo" stroke-width="2" />
+</svg>
