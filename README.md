@@ -19,21 +19,22 @@ The project prioritizes maintainability, reproducible builds, responsive design,
 - Cloudflare Workers, adapter-cloudflare 7, and Wrangler 4
 - Node.js 24 and npm; Playwright Chromium, ESLint, and Prettier
 
-`package-lock.json` records exact dependency versions. The current release candidate
-uses SvelteKit 2.70.3, adapter-cloudflare 7.2.9, and Wrangler 4.149.0.
+`package-lock.json` records exact dependency versions. Version 0.2.0 uses SvelteKit 2.70.3, adapter-cloudflare 7.2.9, and Wrangler 4.149.0.
 
 ## Status
 
-**Current milestone: v0.2.0 release candidate**
+**Current release: v0.2.0**
 
-The v0.2.0 update introduces an expanded project showcase, refreshed professional positioning, responsive UI improvements, and refinements to the existing design system.
+Version 0.2.0 introduces an expanded project showcase, updated
+professional positioning, responsive UI improvements, optimized
+web fonts, and automated browser testing.
 
-The application version is set to `0.2.0`. Local automated validation and browser
-inspection passed on 2026-10-08. Commit review, Lighthouse audits, and deployment
-verification remain pending; no release tag has been created by this stabilization.
+The release is deployed to [natemtz.dev](https://natemtz.dev).
 
-Previous milestone:
+### Release history
 
+- **v0.2.0:** Expanded portfolio, Chora contributions, responsive
+  redesign, accessibility improvements, and performance optimization.
 - **v0.1.0:** Initial public portfolio structure and core functionality.
 
 ## Features
@@ -85,22 +86,18 @@ Testing included physical Fire TV hardware and Android emulators.
 
 **Upstream repository:** [CraftWorksMC/Chora](https://github.com/CraftWorksMC/Chora)
 
+## Release highlights
+
+### v0.2.0 — October 2026
+
+- Expanded project showcase featuring Bun Burner and Chora
+- Refined responsive UI and project carousel
+- Improved accessibility and keyboard navigation
+- Optimized WOFF2 fonts and site assets
+- Automated validation and browser testing
+- Cloudflare Workers deployment
+
 ## Roadmap
-
-### v0.2.0 — Current milestone
-
-- [x] Responsive visual redesign and refined glass UI
-- [x] Updated professional positioning and technical expertise
-- [x] Bun Burner featured project
-- [x] Chora open-source contribution showcase
-- [x] Redesigned project carousel and navigation controls
-- [x] Improved mobile layout and keyboard accessibility
-- [x] Portfolio branding, favicon assets, and social metadata
-- [x] Node.js 24 tooling, reproducible validation, and CI foundation
-- [x] Local automated validation (2026-10-08)
-- [ ] Mobile and desktop Lighthouse audits
-- [ ] Production deployment verification
-- [ ] Git release tag
 
 ### v0.3.0 — Accessibility & discoverability
 
@@ -184,7 +181,7 @@ Run `npm run build` before a standalone preview. Playwright starts the same prev
 command without rebuilding or reusing another server. The existing tests cover
 homepage rendering, project/contact actions, resume download, carousel button and
 keyboard navigation, custom 404 behavior, and unavailable localStorage. There are no unit tests.
-The 11 Chromium tests include 1440px, 768px, and 390px layouts in both system themes,
+The 12 Chromium tests include 1440px, 768px, and 390px layouts in both system themes,
 with checks for console errors, failed assets, and horizontal overflow. Screenshots
 are written to ignored `test-results/`. External project-link navigation is mocked
 in the homepage test; it does not verify GitHub availability.
@@ -253,11 +250,12 @@ Require the `validate` check in branch protection if desired.
 
 ### Workers Builds settings
 
-The intended Workers Builds setup uses the connected Git repository for production
-and preview builds. Branch behavior and build commands are dashboard settings,
+Cloudflare Workers Builds is connected to the GitHub repository NathanMartinez/portfolio, with automatic production builds enabled for pushes to main. Preview builds are currently disabled.
+
+Branch behavior and build commands are dashboard settings,
 not enforced by `wrangler.jsonc` or the GitHub workflow.
 
-Intended dashboard settings (verify separately before deployment):
+Verified production build settings:
 
 - Node: 24 via `.nvmrc`
 - Build variable: `SKIP_DEPENDENCY_INSTALL=1`
@@ -265,7 +263,7 @@ Intended dashboard settings (verify separately before deployment):
   `npm ci && npm run lint && npm run check && npm run build`
 - Production branch: `main`
 - Production deploy command: `npx wrangler deploy`
-- Other-branch preview command: `npx wrangler versions upload`
+- Other-branch preview command (currently disabled): `npx wrangler versions upload`
 
 GitHub Actions owns the full browser-test validation gate, including Playwright
 and its Linux system dependencies. Cloudflare runs formatting/lint checks,
@@ -274,9 +272,6 @@ Svelte/TypeScript checks, and the production build before deployment.
 This separation keeps browser testing on GitHub's Ubuntu runner, where the workflow
 explicitly installs Chromium and its system dependencies with
 `npx playwright install --with-deps chromium`.
-
-Earlier project notes record a successful hosted build. The dashboard settings and
-hosted v0.2.0 candidate have not been reverified during this local stabilization.
 
 ## Project structure
 
@@ -287,7 +282,7 @@ hosted v0.2.0 candidate have not been reverified during this local stabilization
 - `src/routes/+error.svelte`: custom 404 and repeat-visit messages
 - `src/app.css` and `src/routes/layout.css`: visual system and Tailwind entrypoint
 - `static/assets/`: optimized backgrounds, favicon/touch icons, and `og-preview.png`
-- `static/fonts/`: local font assets
+- `static/fonts/`: locally hosted Inter and IBM Plex Mono fonts, including optimized WOFF2 assets
 - `static/resume.pdf`: downloadable resume
 - `tests/`: homepage, 404, and responsive/theme browser tests
 - `scripts/cf-typegen.mjs`: generated application binding types
