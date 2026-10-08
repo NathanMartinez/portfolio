@@ -25,7 +25,7 @@
 
 @font-face {
 	font-family: 'IBM Plex Mono';
-	src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
+	src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -33,7 +33,7 @@
 
 @font-face {
 	font-family: 'IBM Plex Mono';
-	src: url('/fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
+	src: url('/fonts/IBMPlexMono-SemiBold.woff2') format('woff2');
 	font-weight: 600;
 	font-style: normal;
 	font-display: swap;
@@ -41,7 +41,7 @@
 
 @font-face {
 	font-family: 'Inter';
-	src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+	src: url('/fonts/InterVariable.woff2') format('woff2');
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
@@ -168,6 +168,7 @@
 	pointer-events: none;
 	background: var(--bg);
 }
+
 .atmosphere picture,
 .atmosphere img {
 	width: 100%;
