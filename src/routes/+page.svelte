@@ -60,7 +60,7 @@
 	<section class="glass hero" aria-labelledby="hero-heading">
 		<p class="eyebrow">Nate Martinez</p>
 		<h1 id="hero-heading">
-			Software Quality,<br /> Systems Engineering,<br />and Developer Tooling.
+			Software Quality,<br /> Systems Engineering,<br /> and Developer Tooling.
 		</h1>
 		<p class="hero-description">
 			I bring enterprise QA and systems experience to software testing, infrastructure automation,
