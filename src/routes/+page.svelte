@@ -5,21 +5,23 @@
 	import { projects } from '$lib/data/projects';
 
 	const skills = [
-		'Manual Testing',
-		'API Testing',
-		'Database Testing',
-		'Technical Troubleshooting',
-		'Defect Reproduction',
-		'Test Automation',
-		'Linux',
 		'TypeScript',
-		'Git',
-		'Networking'
+		'Linux',
+		'Test Automation',
+		'API & Integration Testing',
+		'Git & GitHub Actions',
+		'Systems Engineering',
+		'Infrastructure Automation',
+		'Podman & Containers',
+		'Networking & DNS',
+		'CI/CD',
+		'Defect Reproduction',
+		'Technical Troubleshooting'
 	];
 </script>
 
 <svelte:head>
-	<title>Nate Martinez | Software Quality, Systems & Automation</title>
+	<title>Nate Martinez | Software Quality, Systems Engineering & Developer Tooling.</title>
 
 	<meta
 		name="description"
@@ -28,7 +30,10 @@
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Nate Martinez" />
-	<meta property="og:title" content="Nate Martinez | Software Quality, Systems & Automation" />
+	<meta
+		property="og:title"
+		content="Nate Martinez | Software Quality, Systems Engineering & Developer Tooling."
+	/>
 	<meta
 		property="og:description"
 		content="Software quality, systems support, automation, and open-source developer tooling."
@@ -39,7 +44,10 @@
 	<meta property="og:image:height" content="630" />
 
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Nate Martinez | Software Quality, Systems & Automation" />
+	<meta
+		name="twitter:title"
+		content="Nate Martinez | Software Quality, Systems Engineering & Developer Tooling."
+	/>
 	<meta
 		name="twitter:description"
 		content="Software quality, systems support, automation, and open-source developer tooling."
@@ -52,11 +60,12 @@
 	<section class="glass hero" aria-labelledby="hero-heading">
 		<p class="eyebrow">Nate Martinez</p>
 		<h1 id="hero-heading">
-			Software quality,<br /> systems support, and<br /> practical automation.
+			Software Quality,<br /> Systems Engineering,<br />and Developer Tooling.
 		</h1>
 		<p class="hero-description">
-			I test software, troubleshoot systems, and build developer tools that make everyday workflows
-			more reliable.
+			I bring enterprise QA and systems experience to software testing, infrastructure automation,
+			and developer tooling. I build reliable tools, investigate complex failures, and contribute
+			fixes to open-source software.
 		</p>
 		<div class="hero-actions">
 			<a href="#projects" class="btn">View Projects <span aria-hidden="true">↘</span></a>
@@ -66,7 +75,7 @@
 	</section>
 
 	<section class="glass skills-strip" aria-labelledby="skills-heading">
-		<h2 id="skills-heading" class="eyebrow">Skills &amp; Tools</h2>
+		<h2 id="skills-heading" class="eyebrow">Technical Expertise</h2>
 		<ul class="tech-list" aria-label="Skills and tools">
 			{#each skills as skill (skill)}<li>{skill}</li>{/each}
 		</ul>
