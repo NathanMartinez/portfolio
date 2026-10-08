@@ -12,7 +12,7 @@ test('missing pages return 404, count visits once, and offer a way home', async 
 		.toBe('2');
 	await page.getByRole('link', { name: 'Back home' }).click();
 	await expect(page).toHaveURL('/');
-	await expect(page.getByRole('heading', { level: 1 })).toContainText('Software quality');
+	await expect(page.getByRole('heading', { level: 1 })).toContainText('Software Quality');
 });
 
 test('missing pages remain usable when browser storage is blocked', async ({ page }) => {

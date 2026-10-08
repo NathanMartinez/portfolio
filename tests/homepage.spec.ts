@@ -3,9 +3,11 @@ import { expect, test } from '@playwright/test';
 test('homepage renders through the Worker preview', async ({ page }) => {
 	const response = await page.goto('/');
 	expect(response?.status()).toBe(200);
-	await expect(page).toHaveTitle('Nate Martinez | Software Quality, Systems & Automation');
+	await expect(page).toHaveTitle(
+		'Nate Martinez | Software Quality, Systems Engineering & Developer Tooling.'
+	);
 	await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-		'Software quality, systems support, and practical automation.'
+		'Software Quality, Systems Engineering, and Developer Tooling.'
 	);
 });
 
@@ -29,7 +31,7 @@ test('homepage actions scroll, download the resume, and expose clear contact lin
 		'href',
 		'mailto:natemtztech@gmail.com'
 	);
-	await expect(page.getByRole('button', { name: 'Next project' })).toHaveCount(0);
+	await expect(page.getByRole('button', { name: 'Next project' })).toBeVisible();
 	await page
 		.context()
 		.route('https://github.com/NathanMartinez/bun-burner', (route) =>
@@ -45,4 +47,27 @@ test('homepage actions scroll, download the resume, and expose clear contact lin
 	const download = await downloadPromise;
 	expect(download.suggestedFilename()).toBe('resume.pdf');
 	expect(await download.failure()).toBeNull();
+});
+
+test('featured projects carousel supports navigation and keyboard activation', async ({ page }) => {
+	await page.goto('/');
+
+	const next = page.getByRole('button', { name: 'Next project' });
+	const previous = page.getByRole('button', { name: 'Previous project' });
+
+	await expect(page.getByRole('heading', { name: 'Bun Burner' })).toBeVisible();
+
+	await next.click();
+	await expect(page.getByRole('heading', { name: 'Chora' })).toBeVisible();
+
+	await previous.click();
+	await expect(page.getByRole('heading', { name: 'Bun Burner' })).toBeVisible();
+
+	await next.focus();
+	await page.keyboard.press('Enter');
+	await expect(page.getByRole('heading', { name: 'Chora' })).toBeVisible();
+
+	await previous.focus();
+	await page.keyboard.press('Space');
+	await expect(page.getByRole('heading', { name: 'Bun Burner' })).toBeVisible();
 });
