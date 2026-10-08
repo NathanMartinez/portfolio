@@ -6,7 +6,7 @@ export type Project = {
 	validation: string;
 	technologies: string[];
 	href: `https://${string}`;
-	icon?: 'flame';
+	icon?: 'flame' | 'chora';
 };
 
 export const projects: Project[] = [
@@ -21,5 +21,25 @@ export const projects: Project[] = [
 		technologies: ['TypeScript', 'Bun', 'WebSockets', 'Test Automation', 'CI', 'Open Source'],
 		href: 'https://github.com/NathanMartinez/bun-burner',
 		icon: 'flame'
+	},
+
+	{
+		id: 'chora',
+		name: 'Chora',
+		label: 'Open-source Android TV contributions',
+		description:
+			'Contributed three merged upstream pull requests to an open-source Android music application, addressing Navidrome provider initialization, pull-request build validation, and playlist deletion confirmation with remote-control input handling.',
+		validation:
+			'Validated functionality on physical Fire TV hardware and Android emulators, including playback, artwork, lyrics, and playlist interactions.',
+		technologies: [
+			'Kotlin',
+			'Android TV',
+			'GitHub Actions',
+			'Regression Testing',
+			'Integration Testing',
+			'Open Source'
+		],
+		href: 'https://github.com/CraftWorksMC/Chora',
+		icon: 'chora'
 	}
 ];
